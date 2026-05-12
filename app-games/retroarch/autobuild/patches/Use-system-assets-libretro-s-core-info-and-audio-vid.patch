@@ -1,0 +1,48 @@
+From 36c9d5ca13290a26776dd0249d07be3df70fdba2 Mon Sep 17 00:00:00 2001
+From: SkyBird233 <52884766+SkyBird233@users.noreply.github.com>
+Date: Fri, 14 Aug 2026 11:46:58 +0800
+Subject: [PATCH] Use system assets, libretro's core info and audio/video
+ filters
+
+---
+ retroarch.cfg | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/retroarch.cfg b/retroarch.cfg
+index 7a9ac73fc3..ad96561fc8 100644
+--- a/retroarch.cfg
++++ b/retroarch.cfg
+@@ -831,7 +831,7 @@
+ 
+ # Assets directory. This location is queried by default when menu interfaces try to look for
+ # loadable assets, etc.
+-# assets_directory =
++assets_directory = /usr/share/retroarch/assets/
+ 
+ # Dynamic wallpapers directory. The place to store the wallpapers dynamically
+ # loaded by the menu depending on context.
+@@ -847,7 +847,7 @@
+ # libretro_directory =
+ 
+ # Core info directory for libretro core information.
+-# libretro_info_path =
++libretro_info_path = /usr/share/libretro/info/
+ 
+ # Path to content database directory.
+ # content_database_path =
+@@ -856,10 +856,10 @@
+ # cheat_database_path =
+ 
+ # Defines a directory where CPU-based video filters are kept.
+-# video_filter_dir =
++video_filter_dir = /usr/lib/retroarch/filters/video/
+ 
+ # Directory where DSP plugins are kept.
+-# audio_filter_dir =
++audio_filter_dir = /usr/lib/retroarch/filters/audio/
+ 
+ # Defines a directory where shaders (Cg, CGP, GLSL) are kept for easy access.
+ # video_shader_dir =
+-- 
+2.55.0
+

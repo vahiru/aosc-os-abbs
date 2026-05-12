@@ -1,0 +1,44 @@
+case "$ARCH" in
+	amd64) OPT="--enable-sse" ;;
+	armel) OPT="--enable-neon" ;;
+	arm64) OPT="--disable-neon" ;;
+	*) OPT="" ;;
+esac
+
+abinfo 'Running configure ...'
+./configure --prefix=/usr \
+            --enable-al \
+            --enable-dylib \
+            --enable-sdl2 \
+            --enable-materialui $OPT \
+            --enable-xvideo \
+            --enable-v4l2 \
+            --enable-freetype \
+            --enable-pulse \
+            --enable-xmb \
+            --with-assets_dir=/usr/share/retroarch/assets \
+            --with-core_info_dir=/usr/share/libretro/info \
+            --with-filters_dir=/usr/lib/retroarch/filters
+
+abinfo 'Building main components ...'
+make
+make DESTDIR="$PKGDIR" install
+
+cd "$SRCDIR"/../retroarch-assets
+make install DESTDIR="$PKGDIR" \
+    INSTALLDIR=/usr/share/retroarch/assets
+
+cd "$SRCDIR"/../libretro-core-info
+make install DESTDIR="$PKGDIR" \
+    INSTALLDIR=/usr/share/libretro/info
+
+abinfo 'Building filters ...'
+make -C "$SRCDIR"/libretro-common/audio/dsp_filters
+make -C "$SRCDIR"/gfx/video_filters
+
+abinfo 'Installing filters ...'
+install -Dvm644 "$SRCDIR"/libretro-common/audio/dsp_filters/*.{dsp,so} -t \
+    "$PKGDIR"/usr/lib/retroarch/filters/audio/
+install -Dvm644 "$SRCDIR"/gfx/video_filters/*.{filt,so} -t \
+    "$PKGDIR"/usr/lib/retroarch/filters/video/
+
