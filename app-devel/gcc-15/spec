@@ -6,6 +6,7 @@ CHKSUMS="sha256::fa59c1beef8995f27c4d71c1df227587189315d3e6faff1bb4306e61b0c530e
 CHKUPDATE="git::url=https://gcc.gnu.org/git/gcc.git;pattern=(?:releases/gcc-)(15\\.\\d+\\.\\d+)"
 # Note: Defines whether this is the default version of GCC to supply
 #       the base runtime.
-__DEFAULT_GCC=1
+__DEFAULT_GCC=0
 # NOTE: Bootstrap stages are built with LTO.
 ENVREQ="total_mem=60"
+REL=1
