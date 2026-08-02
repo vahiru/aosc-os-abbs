@@ -849,7 +849,6 @@ nodejs-20
 txaio
 autobahn
 beaker
-cachy
 cfgv
 cheetah3
 cherrypy
