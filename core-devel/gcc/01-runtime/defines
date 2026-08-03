@@ -1,8 +1,8 @@
 PKGNAME=gcc-runtime
 PKGSEC=devel
-PKGDEP="gcc-runtime-15"
+PKGDEP="gcc-runtime-16"
 PKGDES="Runtime libraries of GCC (metapackage)"
-BUILDDEP="gcc-15"
+BUILDDEP="gcc-16"
 
 ABSPILTDBG=0
 ABSTRIP=0
