@@ -1,5 +1,7 @@
-VER=13.3.1
-__CODENAME="Meow"
-__BUILD_ID="20260613"
+VER=14.0.0
+# placeholder: Core 14 will likely reject anything related to cat as a
+# code name
+__CODENAME="Neko"
+__BUILD_ID="20260807"
 DUMMYSRC=1
 CHKSUMS="SKIP"
