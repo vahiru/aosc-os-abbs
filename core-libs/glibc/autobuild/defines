@@ -7,36 +7,30 @@ PKGPROV="libc-bin_spiral"
 PKGDES="GNU C Library"
 
 AUTOTOOLS_AFTER=(
+    '--enable-option-checking=fatal'
     '--libexecdir=/usr/lib'
     '--with-headers=/usr/include'
     '--with-bugurl=https://github.com/AOSC-Dev/aosc-os-abbs/issues'
-    '--disable-add-ons'
     '--enable-kernel=4.19.0'
     '--disable-profile'
-    '--disable-tunables'
-    '--enable-lock-elision'
-    '--disable-multi-arch'
+    '--enable-multi-arch'
     '--disable-werror'
-    '--enable-static'
-    '--disable-multi-arch'
-    '--with-__thread'
-    '--enable-obsolete-nsl'
-    '--enable-obsolete-rpc'
     '--enable-bind-now'
-    '--enable-stackguard-randomization'
     '--enable-stack-protector=strong'
     '--enable-fortify-source=3'
-    '--disable-crypt'
+    '--disable-nscd'
 )
+
 # Note: For control-flow protection via Intel CET.
 AUTOTOOLS_AFTER__AMD64=(
     "${AUTOTOOLS_AFTER[@]}"
     '--enable-cet'
 )
-# Note: For MTE (Memory Tagging Extension) support.
-AUTOTOOLS_AFTER__ARM64=(
+
+# Note: MIPS lacks GNU indirect function support.
+AUTOTOOLS_AFTER__LOONGSON3=(
     "${AUTOTOOLS_AFTER[@]}"
-    '--enable-memory-tagging'
+    '--disable-multi-arch'
 )
 
 # Note: Needed for compilers and debuggers.
@@ -63,9 +57,6 @@ AB_FLAGS_SPECS=0
 # /usr/bin/ld: .../nscd/gai.o:(.data.rel.local.DW.ref.__gcc_personality_v0[DW.ref.__gcc_personality_v0]+0x0):
 # undefined reference to `__gcc_personality_v0'
 AB_FLAGS_EXC=0
-
-# Note: -O3 bloats binary sizes, we don't want that for Afterglow.
-AB_FLAGS_O3__RETRO=0
 
 # Note: Enable building for all HWCAPS microarchitectures.
 AB_HWCAPS=1
