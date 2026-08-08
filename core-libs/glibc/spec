@@ -1,6 +1,7 @@
 VER=2.44
 LOCALEGENVER=20160914
-SRCS="tbl::https://ftpmirror.gnu.org/gnu/glibc/glibc-$VER.tar.xz \
+# FIXME: ftpmirror.gnu.org is unstable as at 20260808
+SRCS="tbl::https://mirrors.tuna.tsinghua.edu.cn/gnu/glibc/glibc-$VER.tar.xz \
       git::commit=tags/v$LOCALEGENVER;rename=locale-gen-$LOCALEGENVER::https://github.com/AOSC-Dev/locale-gen"
 CHKSUMS="sha256::37f600f2bef3c5e8300147059568b2a2e40a7ad6ccc65ce942556d49429cc667 \
          SKIP"
