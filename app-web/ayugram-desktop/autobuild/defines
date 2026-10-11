@@ -10,7 +10,7 @@ PKGSUG="webkit2gtk"
 PKGDES="Telegram desktop client fork with ghost mode, message history, and extended customization"
 
 # API credentials published by upstream for AyuGram builds
-# https://github.com/AyuGram/AyuGramDesktop/blob/v7.0.9/docs/api_credentials.md
+# https://github.com/AyuGram/AyuGramDesktop/blob/v7.2.9/docs/api_credentials.md
 # These credentials are shared by all builds that use them, so
 # Telegram may throttle or restrict clients under a shared api_id if
 # it is abused; accounts remain bound to Telegram's third-party client
